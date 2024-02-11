@@ -1,0 +1,90 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1wrw5csrmjrk"]
+
+[ext_resource type="PackedScene" uid="uid://c2sukc56xelxa" path="res://ColorText.tscn" id="1_37grd"]
+[ext_resource type="Script" path="res://ColoredButton.cs" id="2_lsf4d"]
+[ext_resource type="Script" path="res://ColorHelper.cs" id="3_ga1ea"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ous4d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0c3s2"]
+bg_color = Color(0.47451, 0.556863, 1, 1)
+border_color = Color(0.5, 0, 3.141, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa7n6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwsul"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vi8x7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ColorTypeToCorrectionFactor" type="Node" parent="."]
+script = ExtResource("3_ga1ea")
+Hover = 0.2
+Pressed = 0.3
+Disabled = 0.5
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="."]
+offset_left = 961.0
+offset_top = 518.0
+offset_right = 1116.0
+offset_bottom = 580.0
+color = Color(0.341176, 0.580392, 0.623529, 1)
+
+[node name="ColorRect" parent="." instance=ExtResource("1_37grd")]
+offset_left = 15.0
+offset_top = 20.0
+offset_right = 90.0
+offset_bottom = 95.0
+color = Color(0.341176, 0.580392, 0.623529, 1)
+
+[node name="ColorRect2" parent="." instance=ExtResource("1_37grd")]
+offset_left = 111.0
+offset_top = 20.0
+offset_right = 186.0
+offset_bottom = 95.0
+color = Color(0.272941, 0.464314, 0.498823, 1)
+ColorType = 1
+
+[node name="ColorRect3" parent="." instance=ExtResource("1_37grd")]
+offset_left = 202.0
+offset_top = 20.0
+offset_right = 277.0
+offset_bottom = 95.0
+color = Color(0.170588, 0.290196, 0.311765, 1)
+ColorType = 2
+
+[node name="ColorRect4" parent="." instance=ExtResource("1_37grd")]
+offset_left = 300.0
+offset_top = 20.0
+offset_right = 375.0
+offset_bottom = 95.0
+color = Color(0.13647, 0.232157, 0.249412, 1)
+ColorType = 3
+
+[node name="ColorRect5" parent="." instance=ExtResource("1_37grd")]
+offset_left = 402.0
+offset_top = 20.0
+offset_right = 477.0
+offset_bottom = 95.0
+color = Color(0.13647, 0.232157, 0.249412, 1)
+ColorType = 4
+
+[node name="Button" type="Button" parent="."]
+offset_left = 31.0
+offset_top = 130.0
+offset_right = 149.0
+offset_bottom = 179.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_ous4d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0c3s2")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_oa7n6")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_uwsul")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vi8x7")
+script = ExtResource("2_lsf4d")
+
+[connection signal="color_changed" from="ColorPickerButton" to="ColorRect" method="ChangeColor"]
+[connection signal="color_changed" from="ColorPickerButton" to="ColorRect2" method="ChangeColor"]
+[connection signal="color_changed" from="ColorPickerButton" to="ColorRect3" method="ChangeColor"]
+[connection signal="color_changed" from="ColorPickerButton" to="ColorRect4" method="ChangeColor"]
+[connection signal="color_changed" from="ColorPickerButton" to="ColorRect5" method="ChangeColor"]
+[connection signal="color_changed" from="ColorPickerButton" to="Button" method="ChangeMainColor"]
